@@ -32,7 +32,6 @@ dmExtension::Result FinalizeDefoldFMOD(dmExtension::Params* params) {
     return dmExtension::RESULT_OK;
 }
 
-#if defined(DM_PLATFORM_HTML5) || defined(DM_PLATFORM_ANDROID) || defined(DM_PLATFORM_OSX) || defined(DM_PLATFORM_WINDOWS)
 void OnEventDefoldFMOD(dmExtension::Params* params, const dmExtension::Event* event) {
     switch (event->m_Event) {
         case dmExtension::EVENT_ID_ACTIVATEAPP:
@@ -43,9 +42,6 @@ void OnEventDefoldFMOD(dmExtension::Params* params, const dmExtension::Event* ev
             break;
     }
 }
-#else
-#define OnEventDefoldFMOD 0
-#endif
 
 int FMODBridge_dmBuffer_GetBytes(FMODBridge_HBuffer buffer, void** bytes, uint32_t* size) {
     return dmBuffer::GetBytes((dmBuffer::HBuffer)buffer, bytes, size) != dmBuffer::RESULT_OK;
